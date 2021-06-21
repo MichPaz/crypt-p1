@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  p1-crypt:
+    build: ./docker-crypt
+    command: ["bash","/usr/src/api/start.sh"]
+    restart: always
+    ports:
+      - "${CRYPT_PORT}:${CRYPT_PORT}"
+    expose:
+      - "${CRYPT_PORT}"
+    container_name: ${CRYPT_HOST}
+    # depends_on:
+    #   - p1-psql
+    volumes:
+      - ${CRYPT_PATH}:/usr/src/api
+      - ${STORAGE_PATH}/crypt/storage/json:/usr/src/storage/json
+    env_file:
+      - ./.env
+    environment:
+      # - CRYPT_HOST=${CRYPT_HOST}
+      - FORCE=${FORCE}
+      - NPM_INSTALL=${NPM_INSTALL}
+
+  p1-view:
+    build: ./docker-view
+    stdin_open: "${STDIN_OPEN}"
+    command: ["bash","/usr/src/api/start.sh"]
+    restart: always
+    ports:
+      - "${VIEW_PORT}:${VIEW_PORT}"
+    expose:
+      - "${VIEW_PORT}"
+    container_name: ${VIEW_HOST}
+    # depends_on:
+    #   - p1-psql
+    volumes:
+      - ${VIEW_PATH}:/usr/src/api
+    env_file:
+      - ./.env
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - NPM_INSTALL=${NPM_INSTALL}
+
+  # p1-psql:
+  #   build: ./docker-psql
+  #   container_name: ${PSQL_HOST}
+  #   restart: always
+  #   expose:
+  #     - "5432"
+  #   volumes:
+  #     - ${PSQL_PATH}/data:/var/lib/postgresql/data
