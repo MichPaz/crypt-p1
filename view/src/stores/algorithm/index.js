@@ -31,7 +31,7 @@ class Stores extends EventEmitter {
 
     async setSUB() {
 
-        const request = `${this.route}/${this.option}`
+        const request = `crypt/${this.option}`
         console.log('request', request)
         await api.post(request, this.body)
             .then(res => {

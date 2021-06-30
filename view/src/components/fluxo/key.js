@@ -1,6 +1,7 @@
 import React from 'react'
 import Common from './key/common'
 import Des from './key/des'
+import Des3 from './key/3des'
 
 function key(props) {
 
@@ -11,7 +12,7 @@ function key(props) {
         'aes': Common,
         'blowfish': Common,
         'twofish': Common,
-        '3des': Common,
+        '3des': Des3,
         'idea': Common,
     }
 

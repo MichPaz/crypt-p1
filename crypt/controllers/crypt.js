@@ -7,9 +7,10 @@ function generateInput(body) {
 function crypt(req, res) {
 
   try {
+    const { algorithm } = req.body
     const content = generateInput(req.body)
     // console.log(content)
-    let result = exec(`echo "${content}" | python3 ./algorithm/des.py`).toString()
+    let result = exec(`echo "${content}" | python3 ./algorithm/${algorithm}.py`).toString()
     console.log('aa')
     console.log(result)
     result = result.replace(/.*ypted Message: /, '')
