@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -6,6 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import ListAltIcon from '@material-ui/icons/ListAlt';
+import { options } from '../../main/algorithms'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -15,46 +17,19 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export const options = [
-    {
-        value: 'des',
-        label: 'DES',
-        description: 'Data Encryption Standart'
-    },
-    {
-        value: 'aes',
-        label: 'AES',
-        description: 'Advanced Encryption Standard'
-    },
-    {
-        value: 'blowfish',
-        label: 'Blowfish',
-        description: ''
-    },
-    {
-        value: 'twofish',
-        label: 'Twofish',
-        description: ''
-    },
-    {
-        value: '3des',
-        label: '3DES',
-        description: 'Triple Data Encryption Standard'
-    },
-    {
-        value: 'idea',
-        label: 'IDEA',
-        description: 'International Data Encryption Algorithm'
-    },
-]
 
 export default function FolderList() {
     const classes = useStyles();
+    const history = useHistory()
+
+    const handleClick = (value) => () => {
+        history.push(`?informacao=${value}`)
+    }
 
     return (
         <List className={classes.root}>
             {options.map(option => (
-                <ListItem key={option.value}>
+                <ListItem key={option.value} button onClick={handleClick(option.value)}>
                     <ListItemAvatar>
                         <Avatar><ListAltIcon /></Avatar>
                     </ListItemAvatar>

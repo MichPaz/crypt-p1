@@ -10,6 +10,7 @@ import './style/global.css';
 import store from '../stores'
 import theme from './paleta'
 import { ThemeProvider } from '@material-ui/styles';
+import AlgorithmInfo from './algorithmInfo'
 // import Footer from './footer'
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
               <Alert />
               <Menu />
               <Routes />
+              <AlgorithmInfo />
             </div>
             {/* <Footer /> */}
           </div>
