@@ -2,6 +2,7 @@ import React from 'react'
 import Common from './key/common'
 import Des from './key/des'
 import Des3 from './key/3des'
+import Idea from './key/idea'
 
 function key(props) {
 
@@ -13,7 +14,7 @@ function key(props) {
         'blowfish': Common,
         'twofish': Common,
         '3des': Des3,
-        'idea': Common,
+        'idea': Idea,
     }
 
     const Component = options[data.algorithm]
