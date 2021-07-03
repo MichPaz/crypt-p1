@@ -7,7 +7,7 @@ import { TextField, Container, Grid } from '@material-ui/core'
 const validation = Yup.object({
     key: Yup.string()
         .matches(/[0-1]*/, 'Digite um número válido em base binária')
-        .length(64, 'Digite um numero em binário com 64 caracteres')
+        .length(32, 'Digite um numero em binário com 64 caracteres')
         .required('O preenchimento da chave é obrigatório para dar continuidade no Processo.')
 })
 
