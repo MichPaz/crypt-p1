@@ -14,7 +14,7 @@ function crypt(req, res) {
     // console.log(result)
     result = result.replace(/.*ypted Message: /, '')
     console.log(result)
-    res.status(200).send({ message: result/*.slice(0, -5)*/ });
+    res.status(200).send({ message: result.slice(0, -5) });
   } catch (e) {
     console.log(e)
     res.status(400).send(e);
