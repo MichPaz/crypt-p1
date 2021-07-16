@@ -5,3 +5,6 @@ RUN apt-get install python3
 EXPOSE $CRYPT_PORT
 WORKDIR /usr/src/api
 
+ENV LANG C.UTF-8
+ENV LANGUAGE C.UTF-8
+ENV LC_ALL C.UTF-8

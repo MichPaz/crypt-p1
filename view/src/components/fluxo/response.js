@@ -4,11 +4,15 @@ import * as Yup from 'yup'
 
 import actions from '../../actions/algorithm'
 import stores from '../../stores/algorithm'
+import Alert from '../../stores/feedbackMessage/snack'
 
 import {
-    FormControl, Container, Grid, Typography,
+    FormControl, Container, Grid, Typography, IconButton,
     InputLabel, Select, MenuItem, FormHelperText, Paper
 } from '@material-ui/core'
+
+import FileCopyIcon from '@material-ui/icons/FileCopy';
+
 
 const validation = Yup.object({
     option: Yup.string()
@@ -44,12 +48,36 @@ export const Response = () => {
         }
     }, [])
 
+    const copy = () => {
+        const id = 'to-copy'
+        var text = document.getElementById(id).innerText;
+        var elem = document.createElement("textarea");
+        document.body.appendChild(elem);
+        elem.value = text;
+        elem.select();
+        document.execCommand("copy");
+        document.body.removeChild(elem);
+        Alert.setMessage({ variant: 'success', message: 'Sucesso ao copiar texto' })
+    }
+
     return (<>
-        <Typography color='textSecondary'>
-            {status ? 'A resposta foi obtida com sucesso' : 'Houve um erro ao obter a resposta'}
-        </Typography>
+        <Grid container>
+            <Grid item>
+                <Grid container alignItems='center' style={{height: '100%', marginRight: 8}}>
+                    <Typography color='textSecondary'>
+                        {status ? 'A resposta foi obtida com sucesso' : 'Houve um erro ao obter a resposta'}
+                    </Typography>
+                </Grid>
+            </Grid>
+            <Grid item>
+                <IconButton aria-label="copiar" onClick={copy}>
+                    <FileCopyIcon />
+                </IconButton>
+            </Grid>
+        </Grid>
+
         <Paper variant="outlined">
-            <Typography variant='h6' style={{ margin: 30, wordWrap: 'break-word' }}>
+            <Typography variant='h6' style={{ margin: 30, wordWrap: 'break-word' }} id='to-copy'>
                 {message}
             </Typography>
         </Paper>

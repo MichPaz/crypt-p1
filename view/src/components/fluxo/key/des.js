@@ -25,7 +25,6 @@ const validation = Yup.object({
                 .length(16, 'Digite um numero em hexadecimal com 16 caracteres')
                 .required('O preenchimento da chave é obrigatório para dar continuidade no Processo.')
         })
-
 })
 
 const options = [
@@ -109,7 +108,7 @@ function key(props) {
                                 variant='outlined'
 
                                 onBlur={handleBlur}
-                                helperText={touched.key ? errors.key : ('Digite uma Mensagem a ser Cifrada ou Decifrada')}
+                                helperText={touched.key ? errors.key : ('Digite uma chave')}
                                 error={touched.key && Boolean(errors.key)}
                             />
                         </Grid>

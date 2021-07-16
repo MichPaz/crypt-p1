@@ -51,7 +51,7 @@ function key(props) {
                             variant='outlined'
 
                             onBlur={handleBlur}
-                            helperText={touched.key ? errors.key : ('Digite uma Mensagem a ser Cifrada ou Decifrada')}
+                            helperText={touched.key ? errors.key : ('Digite uma chave')}
                             error={touched.key && Boolean(errors.key)}
                         />
                     </Grid>

@@ -64,7 +64,7 @@ export default function VerticalLinearStepper() {
             // message:'10011000110010110111010010100111100000101100100011000101001011110111001001111101101000000000101111001010010110101000010011101110010001111111001001101001101001001101011001000011100000011001000011011001110101010010111101111000111101010011010110000100100110011100111110000111000000000000000100001111100010000100011010011011',
             // option:'dec',
         }
-        );
+    );
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = getSteps();
     console.log(data)
@@ -116,7 +116,7 @@ export default function VerticalLinearStepper() {
 
     return (
         <div className={classes.root}>
-            <Typography variant='h6' style={{marginBottom: 20}}>
+            <Typography variant='h6' style={{ marginBottom: 20 }}>
                 Algoritmos de Cifragem
             </Typography>
             <Stepper activeStep={activeStep} orientation="vertical">
