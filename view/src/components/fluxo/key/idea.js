@@ -7,14 +7,10 @@ import {
 } from '@material-ui/core'
 
 const validation = Yup.object({
-key: Yup.string()
-    .when("type", {
-        is: 16,
-        then: Yup.string()
-            .matches(/([0-9] | [a-f] |[A-F])*/, 'Digite um número válido em base hexadecimal')
-            .length(16, 'Digite um numero em hexadecimal com 16 caracteres')
-            .required('O preenchimento da chave é obrigatório para dar continuidade no Processo.')
-    })
+    key: Yup.string()
+        .matches(/([0-9] | [a-f] |[A-F])*/, 'Digite um número válido em base hexadecimal')
+        .length(16, 'Digite um numero em hexadecimal com 16 caracteres')
+        .required('O preenchimento da chave é obrigatório para dar continuidade no Processo.')
 })
 
 
@@ -68,7 +64,7 @@ function key(props) {
                                 variant='outlined'
 
                                 onBlur={handleBlur}
-                                helperText={touched.key ? errors.key : ('Digite uma chave')}
+                                helperText={touched.key ? errors.key : ('Digite uma chave em Hexadecimal')}
                                 error={touched.key && Boolean(errors.key)}
                             />
                         </Grid>
