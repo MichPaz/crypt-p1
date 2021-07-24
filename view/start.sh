@@ -4,13 +4,16 @@ $echo cp $NODE_ENV.env .env
 
 # $echo json -I -f package.json -e "this.homepage='$WEB_BASE'"
 
-
 # echo "NODE_ENV    = ${NODE_ENV}"
 # echo "VIEW_PORT   = ${VIEW_PORT}"
 # echo "NPM_INSTALL = ${NPM_INSTALL}"
 
 if [[ "$NPM_INSTALL" = "true" ]]; then
     $echo npm install
+fi
+
+if [[ "$NODE_ENV" = "prod" ]]; then
+    $echo npm install -g serve
 fi
 
 $echo npm run $NODE_ENV
